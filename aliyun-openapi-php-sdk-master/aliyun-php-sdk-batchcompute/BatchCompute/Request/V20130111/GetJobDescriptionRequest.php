@@ -33,9 +33,9 @@ class GetJobDescriptionRequest extends \RoaAcsRequest
 	public function getResourceName() {
 		return $this->resourceName;
 	}
- 
+
 	public function setResourceName($resourceName) {
-		$this->resourceName = $resourceName;
+		$this->resourceName = $resourceName;   
 		$this->pathParameters["ResourceName"]=$resourceName;
 	}
 	
