@@ -9,7 +9,7 @@ $request = new Mts\SubmitSnapshotJobRequest();
 $input = "{\n" .
     "    \"Bucket\": \"freedom-owen\",\n" .
     "    \"Location\": \"oss-cn-hangzhou\",\n" .
-    "    \"Object\": \"video/test.mp4\"\n" .
+    "    \"Object\": \"video/1464081364.mp4\"\n" .
     "  }";
 
 $SnapshotConfig = "{\n" .

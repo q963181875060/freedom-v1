@@ -2,16 +2,12 @@
     include_once(dirname(__FILE__) . '/alibaba_config.php');
 
     function gmt_iso8601($time) {
+        date_default_timezone_set('Asia/Shanghai');//'Asia/Shanghai'   亚洲/上海
         $dtStr = date("c", $time);
         $mydatetime = new DateTime($dtStr);
         $expiration = $mydatetime->format(DateTime::ISO8601);
         $pos = strpos($expiration, '+');
-        if($pos != false){
-            $expiration = substr($expiration, 0, $pos);
-        }else{
-
-            $expiration = substr($expiration, 0, 10) . 'T' . ((int)substr($expiration, 11, 12) + 12) . substr($expiration, 13, -5);
-        }
+        $expiration = substr($expiration, 0, $pos);
         return $expiration."Z";
     }
 
@@ -73,6 +69,6 @@
     //这个参数是设置用户上传指定的前缀
     $response['dir'] = $dir;
     $response['expiration'] = $expiration;
-    $response['filename'] = $video->filename;
+    $response['filename'] = $video->filename;// . '.' . Functions::getExtension($_GET['filename']);
     echo json_encode($response);
 ?>

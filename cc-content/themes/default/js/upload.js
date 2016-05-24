@@ -6,6 +6,7 @@ policyBase64 = ''
 signature = ''
 callbackbody = ''
 filename = ''
+extension = ''
 dir = ''
 expire = 0
 //g_object_name = ''
@@ -44,7 +45,7 @@ function send_oss_sign_request()
   
     if (xmlhttp!=null)
     {
-        serverUrl = cumulusClips.baseUrl + '/ajax/alibaba/get-oss-sign/';
+        serverUrl = cumulusClips.baseUrl + '/ajax/alibaba/get-oss-sign';//?filename='+filename;
         xmlhttp.open( "GET", serverUrl, false );
         xmlhttp.send( null );
         return xmlhttp.responseText
@@ -227,6 +228,7 @@ var uploader = new plupload.Uploader({
 
             // Set upload filename
             filename = file.name;
+            extension = file.name.substring(file.name.lastIndexOf('.')+1);
             if (!cumulusClips.ie9) filename += ' (' + formatBytes(file.size, 0) + ')';
             $('#upload_status .title').text(filename);
 		},
@@ -259,8 +261,8 @@ var uploader = new plupload.Uploader({
                 document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = info.response;
             } */
             // Determine result from server validation
-            response = data.result;
-            if (data.result.result === true) {
+            /*response = data.result;
+            if (data.result.result === true) {*/
                 // Perform success actions based on what was being uploaded
                 if ($('#upload-type').val() == 'avatar') {
                     resetProgress();
@@ -268,12 +270,12 @@ var uploader = new plupload.Uploader({
                     window.scroll(0,0);
                     $('.avatar img').attr('src', data.result.other);
                 } else {
-                    top.location.href = cumulusClips.baseUrl + '/account/upload/complete/';
+                    top.location.href = cumulusClips.baseUrl + '/account/upload/complete?extension='+extension;
                 }
-            } else {
+            /*} else {
                 resetProgress();
                 displayMessage(false, data.result.message);
-            }
+            }*/
 		},
 
 		Error: function(up, data) {

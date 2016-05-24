@@ -31,7 +31,7 @@ $this->setLayout('full');
         <!-- BEGIN VIDEO -->
         <div id="player">
             <video class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' width="600" height="337" poster="<?=$config->thumbUrl?>/<?=$video->filename?>.jpg">
-                <source src="<?=$config->h264Url?>/<?=$video->filename?>.mp4" type="video/mp4" />
+                <source src="<?=$config->h264Url?>/<?=$video->filename?>" type="video/mp4" />
                 <?php if ($webmEncodingEnabled): ?>
                     <source src="<?=$config->webmUrl?>/<?=$video->filename?>.webm" type="video/webm" />
                 <?php endif; ?>
@@ -105,7 +105,7 @@ $this->setLayout('full');
             <meta property="og:description" content="<?=$video->description?>" /> 
             <meta property="og:image" content="<?=$config->thumbUrl?>/<?=$video->filename?>.jpg" /> 
             <meta property="og:type" content="video" /> 
-            <meta property="og:video" content="<?=$config->h264Url?>/<?=$video->filename?>.mp4"> 
+            <meta property="og:video" content="<?=$config->h264Url?>/<?=$video->filename?>">
             <meta property="og:video:type" content="video/mp4"> 
             <meta property="og:video:width" content="640"> 
             <meta property="og:video:height" content="360"> 

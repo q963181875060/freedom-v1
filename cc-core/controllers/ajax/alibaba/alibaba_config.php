@@ -12,6 +12,7 @@ $host = 'http://freedom-owen.oss-cn-hangzhou.aliyuncs.com';
 $video_dir = 'video/';
 
 //used by mt
+$regionId = "cn-hangzhou";
 $Bucket = 'freedom-owen';
 $Location = 'oss-cn-hangzhou';
 $thumb_dir = 'thumb/';

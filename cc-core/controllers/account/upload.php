@@ -100,7 +100,7 @@ if (isset ($_POST['submitted'])) {
     // Validate Video Upload last (only if other fields were valid)
     if (empty($this->view->vars->errors)) {
         $video->userId = $this->view->vars->loggedInUser->userId;
-        $video->filename = $videoService->generateFilename();
+        $video->filename = time();//$videoService->generateFilename();
         $video->status = 'new';
         $_SESSION['upload'] = $videoMapper->save($video);
         header('Location: ' . HOST . '/account/upload/video/');

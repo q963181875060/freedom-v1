@@ -26,7 +26,7 @@ $(function(){
     $('.watch').click(function(){
         
         var player = $('video').clone().css('display','block');
-        var h264Url = $('meta[name="h264Url"]').attr('content') + '/' + $(this).data('filename') + '.mp4';
+        var h264Url = $('meta[name="h264Url"]').attr('content') + '/' + $(this).data('filename');
         var theoraUrl = $('meta[name="theoraUrl"]').attr('content') + '/' + $(this).data('filename') + '.ogv';
         var thumbUrl = $('meta[name="thumbUrl"]').attr('content') + '/' + $(this).data('filename') + '.jpg';
         

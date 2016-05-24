@@ -60,7 +60,7 @@ class VideoService extends ServiceAbstract
         
         // Delete files
         try {
-            Filesystem::delete(UPLOAD_PATH . '/h264/' . $video->filename . '.mp4');
+            Filesystem::delete(UPLOAD_PATH . '/h264/' . $video->filename);
             Filesystem::delete(UPLOAD_PATH . '/webm/' . $video->filename . '.webm');
             Filesystem::delete(UPLOAD_PATH . '/theora/' . $video->filename . '.ogg');
             Filesystem::delete(UPLOAD_PATH . '/thumbs/' . $video->filename . '.jpg');
@@ -80,7 +80,7 @@ class VideoService extends ServiceAbstract
         $videoMapper = new VideoMapper();
         $filenameAvailable = null;
         do {
-            $filename = Functions::random(20);
+            $filename = Functions::random(30);
             if (!$videoMapper->getVideoByCustom(array('filename' => $filename))) $filenameAvailable = true;
         } while (empty($filenameAvailable));
         return $filename;

@@ -74,7 +74,7 @@ try {
     $debugLog = LOG . '/' . $video->filename . '.log';
     $rawVideo = UPLOAD_PATH . '/temp/' . $video->filename . '.' . $video->originalExtension;
     $h264TempFilePath = UPLOAD_PATH . '/h264/' . $video->filename . '_temp.mp4';
-    $h264FilePath = UPLOAD_PATH . '/h264/' . $video->filename . '.mp4';
+    $h264FilePath = UPLOAD_PATH . '/h264/' . $video->filename;
     $theoraFilePath = UPLOAD_PATH . '/theora/' . $video->filename . '.ogg';
     $webmFilePath = UPLOAD_PATH . '/webm/' . $video->filename . '.webm';
     $mobileTempFilePath = UPLOAD_PATH . '/mobile/' . $video->filename . '_temp.mp4';
