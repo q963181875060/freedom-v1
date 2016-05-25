@@ -211,6 +211,7 @@ class Pagination {
         // Build url string from parts
         $string = $url['scheme'] . '://';
         $string .= $url['host'];
+        $string .= ':' . $url['port'];
         $string .= $url['path'] . ($this->seo_friendly_url ? '/' : '');
         $string .= isset ($url['query']) ?  '?' . $url['query'] : '';
         return $string;

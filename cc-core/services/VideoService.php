@@ -59,7 +59,7 @@ class VideoService extends ServiceAbstract
         $videoMapper->delete($video->videoId);
         
         // Delete files
-        try {
+       /* try {
             Filesystem::delete(UPLOAD_PATH . '/h264/' . $video->filename);
             Filesystem::delete(UPLOAD_PATH . '/webm/' . $video->filename . '.webm');
             Filesystem::delete(UPLOAD_PATH . '/theora/' . $video->filename . '.ogg');
@@ -68,7 +68,7 @@ class VideoService extends ServiceAbstract
             Filesystem::delete(UPLOAD_PATH . '/temp/' . $video->filename . '.' . $video->originalExtension);
         } catch (Exception $e) {
             App::Alert('Error During Video Removal', "Unable to delete video files for: $video->filename. The video has been removed from the system, but the files still remain. Error: " . $e->getMessage());
-        }
+        }*/
     }
 
     /**

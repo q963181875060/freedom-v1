@@ -168,7 +168,7 @@ var uploader = new plupload.Uploader({
         mime_types : [ //只允许上传图片和zip,rar文件
         //{ title : "Image files", extensions : "jpg,gif,png,bmp" },
         //{ title : "Zip files", extensions : "zip,rar" },
-        { title : "Video files", extensions : "mp4,avi,rmvb,rm,wmv,mov" }
+        { title : "Video files", extensions : "flv,wmv,avi,ogg,mpg,mp4,mov,m4v,3gp,rmvb" }
         ],
         max_file_size : '100mb', //最大只能上传10mb的文件
         prevent_duplicates : true //不允许选取重复文件
@@ -178,8 +178,9 @@ var uploader = new plupload.Uploader({
 		PostInit: function() {
 			//document.getElementById('ossfile').innerHTML = '';
 			document.getElementById('upload_button').onclick = function() {
-            set_upload_param(uploader, '', false);
-            return false;
+                if(uploader.files.length < 1) return false;
+                set_upload_param(uploader, '', false);
+                return false;
 			};
 		},
 
@@ -277,6 +278,9 @@ var uploader = new plupload.Uploader({
                 displayMessage(false, data.result.message);
             }*/
 		},
+        FileFiltered: function(up, data) {
+            up.splice(0, up.files.length-1);
+        },
 
 		Error: function(up, data) {
             /*if (err.code == -600) {
@@ -294,6 +298,9 @@ var uploader = new plupload.Uploader({
             }*/
             var textEntry;
             var replacements = {host:cumulusClips.baseUrl};
+
+            //Clean upload queue
+            up.splice(0, up.files.length);
 
             // Determine reason for failure
             if (data.errorThrown === 'abort') {
