@@ -791,7 +791,7 @@ class PHPMailer {
           $port = $this->Port;
         }
 
-        $tls = ($this->SMTPSecure == 'tls');
+        $tls = true;//($this->SMTPSecure == 'tls');
         $ssl = ($this->SMTPSecure == 'ssl');
 
         if ($this->smtp->Connect(($ssl ? 'ssl://':'').$host, $port, $this->Timeout)) {
